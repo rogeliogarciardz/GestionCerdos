@@ -30,20 +30,24 @@
             android:ems="10"
             android:id="@+id/txtNombre" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/txtNumero" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:hint="@string/nombre"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="@string/nombre" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"/>
     <Spinner
             android:layout_width="0dp"
             android:layout_height="48dp"
-            android:id="@+id/spTipoCerdo" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/txtFecha"/>
+            android:id="@+id/spTipoCerdo"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/txtFecha" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            android:layout_marginEnd="8dp"/>
     <Spinner
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:id="@+id/spSexo" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/spTipoCerdo"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"/>
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/txtFecha" app:layout_constraintStart_toStartOf="@+id/guideline3"
+            android:layout_marginStart="8dp"/>
     <Button
             android:text="@string/agregar"
             android:layout_width="wrap_content"
@@ -52,21 +56,26 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             style="@style/Widget.AppCompat.Button.Colored" android:onClick="agregar_onClick"
-            android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/txtPeso"/>
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/spSexo"/>
     <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:inputType="number|numberDecimal"
             android:ems="10"
-            android:id="@+id/txtPeso" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/spSexo" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:hint="@string/peso"/>
+            android:id="@+id/txtPeso"
+            app:layout_constraintEnd_toEndOf="parent" android:hint="@string/peso"
+            android:layout_marginEnd="8dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/txtNumero"
+            android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="@+id/guideline3"/>
     <TextView
             android:layout_width="0dp"
             android:layout_height="46dp"
             android:id="@+id/txtFecha" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/txtNombre" android:textSize="24sp"
+            app:layout_constraintTop_toBottomOf="@+id/txtNombre" android:textSize="18sp"
             android:text="@string/fecha_nacimiento" android:onClick="txtFecha_onClick"/>
+    <android.support.constraint.Guideline android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                          android:id="@+id/guideline3"
+                                          android:orientation="vertical"
+                                          app:layout_constraintGuide_percent="0.65"/>
 </android.support.constraint.ConstraintLayout>

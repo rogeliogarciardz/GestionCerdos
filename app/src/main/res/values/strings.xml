@@ -26,11 +26,12 @@
         <item>Hembra</item>
     </string-array>
 
-    <string name="title_activity_detalle_cerdo">Información detallada del cerdo</string>
+    <string name="title_activity_detalle_cerdo">Información del cerdo</string>
     <string name="informaci_n_detallada_de_cada_cerdo">Información detallada de cada cerdo</string>
     <string name="agregar_nuevo_cerdo">Agregar cerdo</string>
     <string name="total_cerdos">Total de cerdos:</string>
     <string name="action_add_peso">Agregar peso</string>
     <string name="agregar_peso">Agregar Peso</string>
     <string name="peso_historico_del_cerdo">Peso historico del cerdo</string>
+    <string name="ulimas_vacunas">Úlimas vacunas</string>
 </resources>

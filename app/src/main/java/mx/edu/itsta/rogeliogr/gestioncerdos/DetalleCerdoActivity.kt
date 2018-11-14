@@ -124,7 +124,8 @@ class DetalleCerdoActivity : AppCompatActivity() {
     fun mostrarPesoCerdo() {
         entries.clear()
         val task = Runnable {
-            var salida="[    Fecha    ] \t[    Peso     ]\r\n"
+            var salida=   "[   Fecha  ]\n"
+            var salida2 = "[  Peso  ]\n"
             var pesos =
                     mDb?.pesoDao()?.getAll(id_cerdo)
             mUiHandler.post {
@@ -133,13 +134,17 @@ class DetalleCerdoActivity : AppCompatActivity() {
                     for (item in pesos!!) {
                         i++
                         //salida+="["+ util.timestampToString(item.fecha) + "]\t["+ item.peso + " kgs]\r\n"
-                        salida+= String.format("[ %s ][ %-2.00f kgs ]\r\n",util.timestampToString(item.fecha), item.peso)
+                        //salida+= String.format("[ %s ][ %-2.00f kgs ]\r\n",util.timestampToString(item.fecha), item.peso)
+                        salida+=util.timestampToString(item.fecha)+"\r\n"
+                        salida2+=String.format("%.2f",item.peso)+" kgs"+"\r\n"
+
                         entries.add(BarEntry( i.toFloat() , item.peso.toFloat()))
 
                     }
 
                 }
                 lbldcPesoH.setText(salida)
+                lbldcPesoH2.setText(salida2)
                 mostrarGraficaPeso()
             }
         }
