@@ -13,9 +13,16 @@ object util{
 
     fun timestampToString(ts:Long):String{
         var d =  Date(ts)
-        val format = SimpleDateFormat("dd/MM/yyy")
+        val format = SimpleDateFormat("dd/MM/yyyy")
         return format.format(d)
     }
+
+    fun timestampToString2(ts:Long):String{
+        var d =  Date(ts)
+        val format = SimpleDateFormat("dd/MM")
+        return format.format(d)
+    }
+
     fun stringtoDate(dates: String): Date {
         val sdf = SimpleDateFormat("dd-MM-yyyy",
             Locale.getDefault())

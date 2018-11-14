@@ -34,4 +34,6 @@
     <string name="agregar_peso">Agregar Peso</string>
     <string name="peso_historico_del_cerdo">Peso historico del cerdo</string>
     <string name="ulimas_vacunas">Úlimas vacunas</string>
+    <string name="pesos_cerdo">Pesos del cerdo</string>
+    <string name="ver_pesos">Ver pesos...</string>
 </resources>

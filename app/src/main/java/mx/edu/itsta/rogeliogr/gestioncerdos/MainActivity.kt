@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         mDb = GCDataBase.getInstance(this)
 
 //        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        txtLog.setText("O: "+resources.configuration.orientation)
+        //txtLog.setText("O: "+resources.configuration.orientation)
 
         if(resources.configuration.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT){
 
@@ -112,7 +112,7 @@ class MainActivity : AppCompatActivity() {
             mUiHandler.post {
                 if (cerdos != null || cerdos?.size != 0) {
                     rvListaCerdos.adapter = ListaCerdosAdapter(cerdos!!,this,{ partItem : Cerdo -> partItemClicked(partItem) })
-                    //txtLog.text = "Total cerdos: "+cerdos?.size
+                    txtLog.text = "Total cerdos: "+cerdos?.size
                 }
 
             }

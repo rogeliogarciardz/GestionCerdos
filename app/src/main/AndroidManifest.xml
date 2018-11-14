@@ -28,7 +28,12 @@
                 android:label="@string/title_activity_detalle_cerdo"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".AgregarPesoActivity">
+        <activity android:name=".AgregarPesoActivity"
+                android:label="@string/action_add_peso">
+        </activity>
+        <activity android:name=".ListaPesosActivity"
+                android:label="@string/pesos_cerdo">
+
         </activity>
     </application>
 

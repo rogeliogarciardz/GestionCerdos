@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
@@ -127,7 +128,7 @@ class DetalleCerdoActivity : AppCompatActivity() {
             var salida=   "[   Fecha  ]\n"
             var salida2 = "[  Peso  ]\n"
             var pesos =
-                    mDb?.pesoDao()?.getAll(id_cerdo)
+                    mDb?.pesoDao()?.getLast(id_cerdo)
             mUiHandler.post {
                 var i=0
                 if (!(pesos == null && pesos?.size == 0)) {
@@ -154,7 +155,7 @@ class DetalleCerdoActivity : AppCompatActivity() {
 
     fun mostrarGraficaPeso(){
         // in this example, a LineChart is initialized from xml
-        var barChart = chart
+        var barChart = chartPesos
 
 
 
@@ -181,6 +182,12 @@ class DetalleCerdoActivity : AppCompatActivity() {
         barChart.animateY(3000)
         barChart.setFitBars(false)
 
+    }
+
+    fun verListaPesos_onClick(view: View){
+        val intent = Intent(this, ListaPesosActivity::class.java)
+        intent.putExtra("ID", ""+id_cerdo);
+        startActivity(intent)
     }
 
     override fun onDestroy() {

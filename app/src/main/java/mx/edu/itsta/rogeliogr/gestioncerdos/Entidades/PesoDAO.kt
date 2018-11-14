@@ -8,8 +8,11 @@ import android.arch.persistence.room.Query
 
 @Dao
 interface PesoDAO{
-    @Query("SELECT * FROM pesos WHERE id_cerdo=:idc ORDER BY fecha DESC LIMIT 5")
+    @Query("SELECT * FROM pesos WHERE id_cerdo=:idc ORDER BY fecha DESC")
     fun getAll(idc:Long): List<Peso>
+
+    @Query("SELECT * FROM pesos WHERE id_cerdo=:idc ORDER BY fecha DESC LIMIT 5")
+    fun getLast(idc:Long): List<Peso>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(entidadData: Peso)
