@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Gestión Cerdos</string>
+    <string name="action_settings">Settings</string>
+    <string name="no_88888">NO: 88888</string>
+    <string name="id_88888">ID: 88888</string>
+    <string name="pancho">Pancho</string>
+    <string name="_2018_05_23">2018-05-23</string>
+    <string name="semental">SEMENTAL</string>
+    <string name="peso_76_kg">Peso: 76 kg</string>
+    <string name="agregaCerdo">Agrega un nuevo cerdo a la base de datos</string>
+    <string name="numero">Número</string>
+    <string name="nombre">Nombre</string>
+    <string name="fecha_nacimiento">Fecha de nacimiento</string>
+    <string name="agregar">Agregar</string>
+    <string name="peso">Peso del cerdo</string>
+
+    <string-array name="tipo_cerdo">
+        <item>Semental</item>
+        <item>Vientre</item>
+        <item>Macho de Engorda</item>
+        <item>Hembra de Remplazo</item>
+    </string-array>
+
+    <string-array name="sexo">
+        <item>Macho</item>
+        <item>Hembra</item>
+    </string-array>
+
+    <string name="title_activity_detalle_cerdo">Información detallada del cerdo</string>
+    <string name="informaci_n_detallada_de_cada_cerdo">Información detallada de cada cerdo</string>
+    <string name="agregar_nuevo_cerdo">Agregar cerdo</string>
+    <string name="total_cerdos">Total de cerdos:</string>
+    <string name="action_add_peso">Agregar peso</string>
+    <string name="agregar_peso">Agregar Peso</string>
+    <string name="peso_historico_del_cerdo">Peso historico del cerdo</string>
+</resources>

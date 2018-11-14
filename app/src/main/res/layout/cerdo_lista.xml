@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="0dp">
+
+
+    <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="135dp"
+
+            app:cardCornerRadius="2dp"
+            app:cardElevation="2dp"
+            app:cardUseCompatPadding="true">
+
+        <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" tools:layout_editor_absoluteY="4dp"
+                tools:layout_editor_absoluteX="3dp">
+
+            <TextView
+                    android:id="@+id/lblNumero"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:padding="4dp"
+                    android:text="@string/no_88888"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toEndOf="@+id/lblID"
+                    android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="8dp" app:layout_constraintHorizontal_bias="0.96"/>
+            <TextView
+                    android:id="@+id/lblID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="21dp"
+                    android:layout_marginStart="8dp"
+                    android:padding="4dp"
+                    android:text="@string/id_88888"
+                    android:textAlignment="textStart"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toTopOf="parent" android:textSize="12sp"/>
+
+            <TextView
+                    android:id="@+id/lblNombre"
+                    android:layout_width="175dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/pancho"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/lblTipo"/>
+            <TextView
+                    android:text="@string/semental"
+                    android:layout_width="wrap_content"
+                    android:layout_height="19dp"
+                    android:id="@+id/lblTipo"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/lblID"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"/>
+            <TextView
+                    android:text="@string/_2018_05_23"
+                    android:layout_width="174dp"
+                    android:layout_height="17dp"
+                    android:id="@+id/lblFnac"
+                    app:layout_constraintTop_toBottomOf="@+id/lblNombre" android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
+            <TextView
+                    android:text="@string/peso_76_kg"
+                    android:layout_width="167dp"
+                    android:layout_height="17dp"
+                    android:id="@+id/lblPeso" app:layout_constraintStart_toEndOf="@+id/lblFnac"
+                    android:layout_marginStart="8dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/lblNumero"/>
+
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
