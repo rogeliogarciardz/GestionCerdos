@@ -36,4 +36,6 @@
     <string name="ulimas_vacunas">Úlimas vacunas</string>
     <string name="pesos_cerdo">Pesos del cerdo</string>
     <string name="ver_pesos">Ver pesos...</string>
+    <string name="fecha">Fecha</string>
+    <string name="fecha_pesaje">Fecha de pesaje</string>
 </resources>

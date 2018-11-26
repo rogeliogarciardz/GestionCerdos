@@ -23,7 +23,7 @@ class DetalleCerdoActivity : AppCompatActivity() {
     private lateinit var mDbWorkerThread: DbWorkerThread
     private val mUiHandler = Handler()
     private var id_cerdo: Long = 0
-    val entries :ArrayList<BarEntry> = ArrayList()
+    //val entries :ArrayList<BarEntry> = ArrayList()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,7 +78,7 @@ class DetalleCerdoActivity : AppCompatActivity() {
                     lbldcID.text = "ID: " + cerdo?.id_cerdo
                     lbldcNumero.text = "NO: " + cerdo?.numero
                     lbldcNombre.text = "Nombre: " + cerdo?.nombre
-                    lbldcFecha.text = "Nacimiento: " + util.timestampToString( cerdo?.f_nac)
+                    lbldcFecha.text = "Nacimiento: " + util.timeStampToString( cerdo?.f_nac)
                     lbldcPeso.text = "Peso: " + cerdo?.peso + " kg"
                     lbldcTipo.text = resources.getStringArray(R.array.tipo_cerdo).get(cerdo?.tipo) + " (" +
                             cerdo?.sexo + ")"
@@ -123,7 +123,7 @@ class DetalleCerdoActivity : AppCompatActivity() {
     }
 
     fun mostrarPesoCerdo() {
-        entries.clear()
+        //entries.clear()
         val task = Runnable {
             var salida=   "[   Fecha  ]\n"
             var salida2 = "[  Peso  ]\n"
@@ -136,23 +136,23 @@ class DetalleCerdoActivity : AppCompatActivity() {
                         i++
                         //salida+="["+ util.timestampToString(item.fecha) + "]\t["+ item.peso + " kgs]\r\n"
                         //salida+= String.format("[ %s ][ %-2.00f kgs ]\r\n",util.timestampToString(item.fecha), item.peso)
-                        salida+=util.timestampToString(item.fecha)+"\r\n"
+                        salida+=util.timeStampToString(item.fecha)+"\r\n"
                         salida2+=String.format("%.2f",item.peso)+" kgs"+"\r\n"
 
-                        entries.add(BarEntry( i.toFloat() , item.peso.toFloat()))
+                        //entries.add(BarEntry( i.toFloat() , item.peso.toFloat()))
 
                     }
 
                 }
                 lbldcPesoH.setText(salida)
                 lbldcPesoH2.setText(salida2)
-                mostrarGraficaPeso()
+                //mostrarGraficaPeso()
             }
         }
         mDbWorkerThread.postTask(task)
 
     }
-
+/*
     fun mostrarGraficaPeso(){
         // in this example, a LineChart is initialized from xml
         var barChart = chartPesos
@@ -183,7 +183,7 @@ class DetalleCerdoActivity : AppCompatActivity() {
         barChart.setFitBars(false)
 
     }
-
+*/
     fun verListaPesos_onClick(view: View){
         val intent = Intent(this, ListaPesosActivity::class.java)
         intent.putExtra("ID", ""+id_cerdo);

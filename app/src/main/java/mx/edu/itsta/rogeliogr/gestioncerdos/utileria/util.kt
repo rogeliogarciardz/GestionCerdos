@@ -11,15 +11,15 @@ object util{
         Toast.makeText(context,"(!) "+msg, Toast.LENGTH_SHORT).show()
     }
 
-    fun timestampToString(ts:Long):String{
+    fun timeStampToString(ts:Long):String{
         var d =  Date(ts)
         val format = SimpleDateFormat("dd/MM/yyyy")
         return format.format(d)
     }
 
-    fun timestampToString2(ts:Long):String{
+    fun timeStampToString(ts:Long,format:String):String{
         var d =  Date(ts)
-        val format = SimpleDateFormat("dd/MM")
+        val format = SimpleDateFormat(format)
         return format.format(d)
     }
 
