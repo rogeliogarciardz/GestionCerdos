@@ -61,7 +61,10 @@ class DetalleCerdoActivity : AppCompatActivity() {
             agregarPeso()
             true
         }
-
+        R.id.action_add_vacuna->{
+            agregarVacuna()
+            true
+        }
         else -> {
             // If we got here, the user's action was not recognized.
             // Invoke the superclass to handle it.
@@ -84,6 +87,7 @@ class DetalleCerdoActivity : AppCompatActivity() {
                             cerdo?.sexo + ")"
 
                     mostrarPesoCerdo()
+                    mostrarVacunaCerdo()
 
                 } else {
                     util.toastError("NO entontrado " + id_cerdo,this)
@@ -96,28 +100,13 @@ class DetalleCerdoActivity : AppCompatActivity() {
     }
 
     fun agregarPeso() {
-       /* if (id_cerdo > 0) {
-            var peso = Peso()
-            peso.id_cerdo = id_cerdo
-
-            val c = Calendar.getInstance()
-            val year = c.get(Calendar.YEAR)
-            val month = c.get(Calendar.MONTH)
-            val day = c.get(Calendar.DAY_OF_MONTH)
-            peso.fecha = "" + day + "-" + (month + 1) + "-" + year
-            peso.peso = 123.50
-
-            val task = Runnable {
-                mDb?.pesoDao()?.insert(peso)
-                mUiHandler.post {
-                    mostrarPesoCerdo()
-                }
-            }
-            mDbWorkerThread.postTask(task)
-
-        }*/
-
         val intent = Intent(this, AgregarPesoActivity::class.java)
+        intent.putExtra("ID", ""+id_cerdo);
+        startActivity(intent)
+    }
+
+    fun agregarVacuna() {
+        val intent = Intent(this, AgregaVacunaActivity::class.java)
         intent.putExtra("ID", ""+id_cerdo);
         startActivity(intent)
     }
@@ -125,28 +114,50 @@ class DetalleCerdoActivity : AppCompatActivity() {
     fun mostrarPesoCerdo() {
         //entries.clear()
         val task = Runnable {
-            var salida=   "[   Fecha  ]\n"
-            var salida2 = "[  Peso  ]\n"
+            var salida=   util.stringLenCenter("NO",4) +
+                    util.stringLenCenter("Fecha",14)+
+                    util.stringLenCenter("  Peso",10)+"\r\n"
             var pesos =
-                    mDb?.pesoDao()?.getLast(id_cerdo)
+                    mDb?.pesoDao()?.getLast(id_cerdo,5)
             mUiHandler.post {
                 var i=0
                 if (!(pesos == null && pesos?.size == 0)) {
                     for (item in pesos!!) {
                         i++
-                        //salida+="["+ util.timestampToString(item.fecha) + "]\t["+ item.peso + " kgs]\r\n"
-                        //salida+= String.format("[ %s ][ %-2.00f kgs ]\r\n",util.timestampToString(item.fecha), item.peso)
-                        salida+=util.timeStampToString(item.fecha)+"\r\n"
-                        salida2+=String.format("%.2f",item.peso)+" kgs"+"\r\n"
-
-                        //entries.add(BarEntry( i.toFloat() , item.peso.toFloat()))
+                                 salida+=util.stringLenCenter(""+i,4) +
+                                util.stringLenCenter(util.timeStampToString(item.fecha),14)+
+                                util.stringLenLeft(String.format("%.2f",item.peso)+" kgs",10)+"\r\n"
 
                     }
 
                 }
                 lbldcPesoH.setText(salida)
-                lbldcPesoH2.setText(salida2)
                 //mostrarGraficaPeso()
+            }
+        }
+        mDbWorkerThread.postTask(task)
+
+    }
+
+    fun mostrarVacunaCerdo() {
+        val task = Runnable {
+            var salida=   util.stringLenCenter("NO",4) +
+                     util.stringLenCenter("Fecha",14)+
+                    util.stringLen("  Nombre",20)+"\r\n"
+            var vacunas =
+                mDb?.vacunaDao()?.getLast(id_cerdo,5)
+            mUiHandler.post {
+                var i=0
+                if (!(vacunas == null && vacunas?.size == 0)) {
+                    for (item in vacunas!!) {
+                        i++
+                                 salida+=util.stringLenCenter(""+i,4) +
+                                util.stringLenCenter(util.timeStampToString(item.fecha),14)+
+                                util.stringLen(item.nombre,20)+"\r\n"
+                    }
+
+                }
+                lbldcVacunas.setText(salida)
             }
         }
         mDbWorkerThread.postTask(task)
@@ -156,9 +167,6 @@ class DetalleCerdoActivity : AppCompatActivity() {
     fun mostrarGraficaPeso(){
         // in this example, a LineChart is initialized from xml
         var barChart = chartPesos
-
-
-
 
         val dataset = BarDataSet(entries,"Fecha")
 
@@ -186,6 +194,12 @@ class DetalleCerdoActivity : AppCompatActivity() {
 */
     fun verListaPesos_onClick(view: View){
         val intent = Intent(this, ListaPesosActivity::class.java)
+        intent.putExtra("ID", ""+id_cerdo);
+        startActivity(intent)
+    }
+
+    fun verListaVacunas_onClick(view: View){
+        val intent = Intent(this, ListaVacunasActivity::class.java)
         intent.putExtra("ID", ""+id_cerdo);
         startActivity(intent)
     }

@@ -8,7 +8,7 @@ import android.arch.persistence.room.Query
 
 @Dao
 interface CerdoDAO{
-    @Query("SELECT * FROM cerdos WHERE vigente=1")
+    @Query("SELECT * FROM cerdos WHERE vigente=1 ORDER BY Numero")
     fun getAll(): List<Cerdo>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

@@ -4,17 +4,16 @@ import android.arch.persistence.room.Database
 import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
-import mx.edu.itsta.rogeliogr.gestioncerdos.Entidades.Cerdo
-import mx.edu.itsta.rogeliogr.gestioncerdos.Entidades.CerdoDAO
-import mx.edu.itsta.rogeliogr.gestioncerdos.Entidades.Peso
-import mx.edu.itsta.rogeliogr.gestioncerdos.Entidades.PesoDAO
+import mx.edu.itsta.rogeliogr.gestioncerdos.Entidades.*
 
 
-@Database(entities = arrayOf(Cerdo::class, Peso::class),version=5)
+@Database(entities = arrayOf(Cerdo::class, Peso::class, Vacuna::class,Desparacitacion::class),version=6)
 
 abstract class GCDataBase: RoomDatabase(){
     abstract fun cerdoDao(): CerdoDAO
     abstract fun pesoDao(): PesoDAO
+    abstract fun vacunaDao(): VacunaDAO
+    abstract fun desparacitacionDao(): DesparacitacionDAO
 
     companion object {
         private var INSTANCE: GCDataBase? = null

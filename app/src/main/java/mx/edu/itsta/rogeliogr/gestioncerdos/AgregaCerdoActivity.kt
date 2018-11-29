@@ -23,6 +23,10 @@ class AgregaCerdoActivity : AppCompatActivity() {
     private val mUiHandler = Handler()
     private var fn = Date()
 
+    val c = Calendar.getInstance()
+    val year = c.get(Calendar.YEAR)
+    val month = c.get(Calendar.MONTH)
+    val day = c.get(Calendar.DAY_OF_MONTH)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,10 +68,6 @@ class AgregaCerdoActivity : AppCompatActivity() {
 
         }
 
-        val c = Calendar.getInstance()
-        val year = c.get(Calendar.YEAR)
-        val month = c.get(Calendar.MONTH)
-        val day = c.get(Calendar.DAY_OF_MONTH)
         txtFecha.setText( "" + day + "-" + (month+1) + "-" + year)
         fn = util.stringtoDate("" + day + "-" + (month+1) + "-" + year)
 
@@ -77,7 +77,7 @@ class AgregaCerdoActivity : AppCompatActivity() {
     fun agregar_onClick(view: View){
         var numero=0
 
-        if(txtNumero.text.toString().length<=0){
+        if(txtNumero.text.toString().isEmpty()){
             toastError("Debe escribir un número positivo")
             txtNumero.requestFocus()
             return
@@ -113,16 +113,16 @@ class AgregaCerdoActivity : AppCompatActivity() {
     fun insertarCerdo(numero:Int){
         var peso=0
         if(txtNombre.text.length<=0){
-            toastError("Debe escribir el nombre del cerdo")
-            txtNombre.requestFocus()
-            return
+            //toastError("Debe escribir el nombre del cerdo")
+            txtNombre.setText("Cerdo "+numero)
+            //txtNombre.requestFocus()
+            //return
         }
 
         if(txtPeso.text.toString().length<=0){
-            //toastError("Debe escribir el nombre del cerdo")
-            //txtNombre.requestFocus()
-            //return
-            txtNombre.setText("Cerdo "+numero)
+            toastError("Debe escribir el peso del cerdo")
+            txtPeso.requestFocus()
+            return
         }
         try {
             peso = txtPeso.text.toString().toInt()
@@ -166,10 +166,6 @@ class AgregaCerdoActivity : AppCompatActivity() {
     }
 
     fun txtFecha_onClick(view:View){
-        val c = Calendar.getInstance()
-        val year = c.get(Calendar.YEAR)
-        val month = c.get(Calendar.MONTH)
-        val day = c.get(Calendar.DAY_OF_MONTH)
 
 
         val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
@@ -188,6 +184,17 @@ class AgregaCerdoActivity : AppCompatActivity() {
 
     fun toastError(msg:String){
         Toast.makeText(this,"(!) "+msg, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        if (mDbWorkerThread == null) {
+            mDbWorkerThread = DbWorkerThread("dbWorkerThread")
+            mDbWorkerThread.start()
+        }
+        //     mostrarPesoCerdo()
+
     }
 
 }

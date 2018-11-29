@@ -9,4 +9,9 @@
             android:title="@string/action_add_peso"
             app:showAsAction="always|withText"
             android:icon="@android:drawable/ic_input_add"/>
+
+    <item android:title="@string/agregar_vacuna"
+          android:id="@+id/action_add_vacuna"
+          android:icon="@android:drawable/checkbox_on_background"
+          app:showAsAction="always|withText"/>
 </menu>
