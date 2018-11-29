@@ -44,4 +44,5 @@
     <string name="agregar_vacuna">Agregar Vacuna</string>
     <string name="ver_vacunas">Ver vacunas ...</string>
     <string name="lista_todas_las_vacunas_del_cerdo">Lista todas las vacunas del cerdo</string>
+    <string name="eliminar_cerdo">Eliminar cerdo</string>
 </resources>

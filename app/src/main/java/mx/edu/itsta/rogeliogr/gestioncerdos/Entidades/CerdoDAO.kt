@@ -17,6 +17,9 @@ interface CerdoDAO{
     @Query("DELETE from cerdos")
     fun deleteAll()
 
+    @Query("UPDATE cerdos SET Vigente=0 WHERE id_cerdo=:idc")
+    fun deleteById(idc:Long)
+
     @Query("SELECT * FROM cerdos WHERE Numero=:numero")
     fun getByNumero(numero:Int):List<Cerdo>
 
@@ -24,6 +27,7 @@ interface CerdoDAO{
     fun getByID(id_cerdo:Long):Cerdo
     //@Query("SELECT * FROM otraEntidadData where peso=:peso")
     //fun getByPeso(peso:Int): List<OtraEntidadData>
-
+    @Query("UPDATE cerdos SET Vigente=1")
+    fun allVisibe()
 
 }

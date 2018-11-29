@@ -12,6 +12,7 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_agrega_cerdo.*
 
@@ -19,15 +20,16 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import mx.edu.itsta.rogeliogr.gestioncerdos.Entidades.Cerdo
 import mx.edu.itsta.rogeliogr.gestioncerdos.Listas.ListaCerdosAdapter
+import mx.edu.itsta.rogeliogr.gestioncerdos.utileria.RecyclerItemClickListener
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity()  {
+
 
 
     private var mDb: GCDataBase? = null
     private lateinit var mDbWorkerThread: DbWorkerThread
     private val mUiHandler = Handler()
-
     var cerdos: List<Cerdo>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,15 +71,16 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, AgregaCerdoActivity::class.java)
             startActivity(intent)
         }
+
+
+
     }
 
     private fun partItemClicked(partItem: Cerdo) {
        // Toast.makeText(this,"ID: "+partItem.id_cerdo,Toast.LENGTH_SHORT).show()
-
         val intent = Intent(this, DetalleCerdoActivity::class.java)
         intent.putExtra("ID", ""+partItem.id_cerdo);
         startActivity(intent)
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -139,5 +142,18 @@ class MainActivity : AppCompatActivity() {
         mostrarInformacion()
 
     }
+
+    fun allVisible_Onclick(view:View){
+        val task = Runnable {
+            mDb?.cerdoDao()?.allVisibe()
+            mUiHandler.post {
+
+                mostrarInformacion()
+            }
+        }
+        mDbWorkerThread.postTask(task)
+    }
+
+
 
 }

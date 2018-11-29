@@ -17,7 +17,7 @@ interface PesoDAO{
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(entidadData: Peso)
 
-   // @Query("DELETE from pesos")
-   // fun deleteAll()
+    @Query("DELETE from pesos WHERE id_peso=:idc")
+    fun deleteById(idc:Long)
 
 }

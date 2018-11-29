@@ -10,8 +10,8 @@ import mx.edu.itsta.rogeliogr.gestioncerdos.Entidades.Cerdo
 import mx.edu.itsta.rogeliogr.gestioncerdos.R
 import mx.edu.itsta.rogeliogr.gestioncerdos.utileria.util
 
-class ListaCerdosAdapter(val items : List<Cerdo>, val context: Context, val clickListener: (Cerdo) -> Unit) : RecyclerView.Adapter<ViewHolder>() {
 
+class ListaCerdosAdapter(val items : List<Cerdo>, val context: Context, val clickListener: (Cerdo) -> Unit ) : RecyclerView.Adapter<ViewHolder>() {
 
     override fun getItemCount(): Int {
         return items.size
@@ -25,14 +25,21 @@ class ListaCerdosAdapter(val items : List<Cerdo>, val context: Context, val clic
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(items.get(position), clickListener,context)
+        holder.bind(items.get(position), clickListener, context)
         //holder?.nombreFormula?.text = items.get(position)
+
     }
 }
 
 class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
 
-    fun bind(item:Cerdo, clickListener: ( Cerdo) -> Unit,context: Context) {
+
+
+    fun bind(
+        item: Cerdo,
+        clickListener: (Cerdo) -> Unit,
+        context: Context
+    ) {
         var tipo:Array<String> = context.resources.getStringArray(R.array.tipo_cerdo)// arrayOf("SEMENTAL","VIENTRE","MACHO DE ENGORDA","HEMBRA DE REMPLAZO")
 
         itemView.lblID.text = "ID: "+item.id_cerdo
@@ -43,5 +50,7 @@ class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
         itemView.lblPeso.text = "Peso: "+item.peso+" kg"
         //itemView.imvImagen.setImageResource(item.imagen)
         itemView.setOnClickListener { clickListener(item) }
+
+
     }
 }
