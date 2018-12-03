@@ -29,7 +29,7 @@
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-                android:name=".AgregarPesoActivity"
+                android:name=".AgregaPesoActivity"
                 android:label="@string/action_add_peso">
         </activity>
         <activity
@@ -41,6 +41,8 @@
                 android:label="agregar_vacuna">
         </activity>
         <activity android:name=".ListaVacunasActivity">
+        </activity>
+        <activity android:name=".AgregaReproduccionActivity">
         </activity>
     </application>
 

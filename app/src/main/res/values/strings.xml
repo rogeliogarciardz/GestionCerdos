@@ -45,4 +45,10 @@
     <string name="ver_vacunas">Ver vacunas ...</string>
     <string name="lista_todas_las_vacunas_del_cerdo">Lista todas las vacunas del cerdo</string>
     <string name="eliminar_cerdo">Eliminar cerdo</string>
+    <string name="agrega_nuevo_celo">Agrega un nuevo registro de celo</string>
+    <string name="fecha_monta">Fecha de monta</string>
+    <string name="fecha_celo">Fecha de celo</string>
+    <string name="fecha_destete">Fecha de destete</string>
+    <string name="agrega_peso_cerdo">Agrega un nuevo peso del cerdo</string>
+    <string name="numero_semental">No del semental</string>
 </resources>

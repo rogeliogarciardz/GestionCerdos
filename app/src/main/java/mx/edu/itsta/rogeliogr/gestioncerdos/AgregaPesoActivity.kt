@@ -11,7 +11,7 @@ import mx.edu.itsta.rogeliogr.gestioncerdos.utileria.util
 import java.lang.NumberFormatException
 import java.util.*
 
-class AgregarPesoActivity : AppCompatActivity() {
+class AgregaPesoActivity : AppCompatActivity() {
 
     private var mDb: GCDataBase? = null
     private lateinit var mDbWorkerThread: DbWorkerThread

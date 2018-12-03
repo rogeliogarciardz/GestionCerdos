@@ -12,6 +12,7 @@
 
     <item android:title="@string/agregar_vacuna"
           android:id="@+id/action_add_vacuna"
+          android:orderInCategory="101"
           android:icon="@android:drawable/checkbox_on_background"
           app:showAsAction="always|withText"/>
 </menu>

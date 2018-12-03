@@ -8,10 +8,6 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import com.github.mikephil.charting.components.Description
-import com.github.mikephil.charting.data.BarData
-import com.github.mikephil.charting.data.BarDataSet
-import com.github.mikephil.charting.data.BarEntry
 import kotlinx.android.synthetic.main.activity_detalle_cerdo.*
 import kotlinx.android.synthetic.main.content_detalle_cerdo.*
 import mx.edu.itsta.rogeliogr.gestioncerdos.utileria.util
@@ -100,7 +96,7 @@ class DetalleCerdoActivity : AppCompatActivity() {
     }
 
     fun agregarPeso() {
-        val intent = Intent(this, AgregarPesoActivity::class.java)
+        val intent = Intent(this, AgregaPesoActivity::class.java)
         intent.putExtra("ID", ""+id_cerdo);
         startActivity(intent)
     }
@@ -212,6 +208,10 @@ class DetalleCerdoActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        if (mDbWorkerThread == null) {
+            mDbWorkerThread = DbWorkerThread("dbWorkerThread")
+            mDbWorkerThread.start()
+        }
         mostrarDetalle()
     }
 }
