@@ -44,10 +44,9 @@ class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
 
         itemView.lblID.text = "ID: "+item.id_cerdo
         itemView.lblNumero.text = "NO: "+item.numero
-        itemView.lblNombre.text = "Nombre: "+item.nombre
+        itemView.lblNombre.text = ""+item.nombre
         itemView.lblTipo.text = "["+  tipo[item.tipo]+"] ("+ item.sexo +")"
         itemView.lblFnac.text = "Nacimiento: "+ util.timeStampToString( item.f_nac)
-        itemView.lblPeso.text = "Peso: "+item.peso+" kg"
         //itemView.imvImagen.setImageResource(item.imagen)
         itemView.setOnClickListener { clickListener(item) }
 

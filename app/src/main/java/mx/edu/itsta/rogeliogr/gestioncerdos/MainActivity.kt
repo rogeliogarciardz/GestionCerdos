@@ -17,10 +17,12 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_agrega_cerdo.*
 
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_detalle_cerdo.*
 import kotlinx.android.synthetic.main.content_main.*
 import mx.edu.itsta.rogeliogr.gestioncerdos.Entidades.Cerdo
 import mx.edu.itsta.rogeliogr.gestioncerdos.Listas.ListaCerdosAdapter
 import mx.edu.itsta.rogeliogr.gestioncerdos.utileria.RecyclerItemClickListener
+import mx.edu.itsta.rogeliogr.gestioncerdos.utileria.util
 import java.util.*
 
 class MainActivity : AppCompatActivity()  {
@@ -31,6 +33,7 @@ class MainActivity : AppCompatActivity()  {
     private lateinit var mDbWorkerThread: DbWorkerThread
     private val mUiHandler = Handler()
     var cerdos: List<Cerdo>? = null
+    private var ultimo_peso:Double = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -114,6 +117,7 @@ class MainActivity : AppCompatActivity()  {
                 mDb?.cerdoDao()?.getAll()
             mUiHandler.post {
                 if (cerdos != null || cerdos?.size != 0) {
+
                     rvListaCerdos.adapter = ListaCerdosAdapter(cerdos!!,this,{ partItem : Cerdo -> partItemClicked(partItem) })
                     txtLog.text = "Total cerdos: "+cerdos?.size
                 }
@@ -153,7 +157,5 @@ class MainActivity : AppCompatActivity()  {
         }
         mDbWorkerThread.postTask(task)
     }
-
-
 
 }
