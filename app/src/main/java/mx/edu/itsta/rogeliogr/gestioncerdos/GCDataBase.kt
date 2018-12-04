@@ -7,7 +7,14 @@ import android.content.Context
 import mx.edu.itsta.rogeliogr.gestioncerdos.Entidades.*
 
 
-@Database(entities = arrayOf(Cerdo::class, Peso::class, Vacuna::class,Desparacitacion::class,Reproduccion::class,Parto::class),version=6)
+@Database(entities = arrayOf(
+    Cerdo::class,
+    Peso::class,
+    Vacuna::class,
+    Desparacitacion::class,
+    Reproduccion::class,
+    Parto::class,
+    Salida::class),version=7)
 
 abstract class GCDataBase: RoomDatabase(){
     abstract fun cerdoDao(): CerdoDAO
@@ -16,6 +23,7 @@ abstract class GCDataBase: RoomDatabase(){
     abstract fun desparacitacionDao(): DesparacitacionDAO
     abstract fun reproduccionDao():ReproduccionDAO
     abstract fun partoDao():PartoDAO
+    abstract fun salidaDao():SalidaDAO
 
     companion object {
         private var INSTANCE: GCDataBase? = null

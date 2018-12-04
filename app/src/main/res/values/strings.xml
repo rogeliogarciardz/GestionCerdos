@@ -17,8 +17,8 @@
     <string-array name="tipo_cerdo">
         <item>Semental</item>
         <item>Vientre</item>
-        <item>Macho de Engorda</item>
-        <item>Hembra de Remplazo</item>
+        <item>Macho Engorda</item>
+        <item>Hembra Remplazo</item>
     </string-array>
 
     <string-array name="sexo">
@@ -51,4 +51,7 @@
     <string name="fecha_destete">Fecha de destete</string>
     <string name="agrega_peso_cerdo">Agrega un nuevo peso del cerdo</string>
     <string name="numero_semental">No del semental</string>
+    <string name="agregar_reproduccion">Agregar reproducción</string>
+    <string name="agregar_parto">Parto</string>
+    <string name="agregar_salida">Salida</string>
 </resources>

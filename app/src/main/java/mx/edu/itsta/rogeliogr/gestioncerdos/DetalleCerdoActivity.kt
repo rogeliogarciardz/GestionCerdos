@@ -8,19 +8,20 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_detalle_cerdo.*
 import kotlinx.android.synthetic.main.content_detalle_cerdo.*
+import mx.edu.itsta.rogeliogr.gestioncerdos.Entidades.Cerdo
 import mx.edu.itsta.rogeliogr.gestioncerdos.utileria.util
 
-class DetalleCerdoActivity : AppCompatActivity() {
 
+class DetalleCerdoActivity : AppCompatActivity() {
 
     private var mDb: GCDataBase? = null
     private lateinit var mDbWorkerThread: DbWorkerThread
     private val mUiHandler = Handler()
     private var id_cerdo: Long = 0
-    //val entries :ArrayList<BarEntry> = ArrayList()
-
+    private var tipo:Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,19 +37,24 @@ class DetalleCerdoActivity : AppCompatActivity() {
         mDbWorkerThread.start()
 
         mDb = GCDataBase.getInstance(this)
-
-        var msg = intent.getStringExtra("ID")
+        val msg = intent.getStringExtra("ID")
         id_cerdo = msg.toLong()
 
         Thread.sleep(1000)
-
         mostrarDetalle()
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.detalle_cerdo_menu, menu)
+        if(tipo == 1) {
+            menu?.findItem(R.id.action_add_reproduccion)?.setVisible(true)
+            menu?.findItem(R.id.action_add_parto)?.setVisible(true)
+
+        }else{
+            menu?.findItem(R.id.action_add_reproduccion)?.setVisible(false)
+            menu?.findItem(R.id.action_add_parto)?.setVisible(false)
+        }
+
         return true
     }
 
@@ -62,8 +68,6 @@ class DetalleCerdoActivity : AppCompatActivity() {
             true
         }
         else -> {
-            // If we got here, the user's action was not recognized.
-            // Invoke the superclass to handle it.
             super.onOptionsItemSelected(item)
         }
     }
@@ -71,7 +75,7 @@ class DetalleCerdoActivity : AppCompatActivity() {
 
     fun mostrarDetalle() {
         val task = Runnable {
-            var cerdo = mDb?.cerdoDao()?.getByID(id_cerdo)
+            val cerdo = mDb?.cerdoDao()?.getByID(id_cerdo)
             mUiHandler.post {
                 if (cerdo != null) {
                     lbldcID.text = "ID: " + cerdo?.id_cerdo
@@ -82,17 +86,17 @@ class DetalleCerdoActivity : AppCompatActivity() {
                     lbldcTipo.text = resources.getStringArray(R.array.tipo_cerdo).get(cerdo?.tipo) + " (" +
                             cerdo?.sexo + ")"
 
+                    tipo = cerdo?.tipo
+
                     mostrarPesoCerdo()
                     mostrarVacunaCerdo()
 
                 } else {
                     util.toastError("NO entontrado " + id_cerdo,this)
                 }
-
             }
         }
         mDbWorkerThread.postTask(task)
-
     }
 
     fun agregarPeso() {
@@ -123,16 +127,13 @@ class DetalleCerdoActivity : AppCompatActivity() {
                                  salida+=util.stringLenCenter(""+i,4) +
                                 util.stringLenCenter(util.timeStampToString(item.fecha),14)+
                                 util.stringLenLeft(String.format("%.2f",item.peso)+" kgs",10)+"\r\n"
-
                     }
 
                 }
                 lbldcPesoH.setText(salida)
-                //mostrarGraficaPeso()
             }
         }
         mDbWorkerThread.postTask(task)
-
     }
 
     fun mostrarVacunaCerdo() {
@@ -151,43 +152,13 @@ class DetalleCerdoActivity : AppCompatActivity() {
                                 util.stringLenCenter(util.timeStampToString(item.fecha),14)+
                                 util.stringLen(item.nombre,20)+"\r\n"
                     }
-
                 }
                 lbldcVacunas.setText(salida)
             }
         }
         mDbWorkerThread.postTask(task)
-
     }
-/*
-    fun mostrarGraficaPeso(){
-        // in this example, a LineChart is initialized from xml
-        var barChart = chartPesos
 
-        val dataset = BarDataSet(entries,"Fecha")
-
-      /*  val labels:ArrayList<String> = ArrayList()
-        labels.add("Paquete #1")
-        labels.add("Paquete #2")
-        labels.add("Paquete #3")
-        labels.add("Paquete #4")
-        labels.add("Paquete #4")
-*/
-
-        val data = BarData( dataset)
-        barChart.data = data
-
-        //barChart.labelFor = labels
-        //dataset.setColors(ColorTemplate.COLORFUL_COLORS)
-        var desc = Description()
-        desc.text = "Peso"
-        barChart.description =desc
-
-        barChart.animateY(3000)
-        barChart.setFitBars(false)
-
-    }
-*/
     fun verListaPesos_onClick(view: View){
         val intent = Intent(this, ListaPesosActivity::class.java)
         intent.putExtra("ID", ""+id_cerdo);
@@ -211,6 +182,7 @@ class DetalleCerdoActivity : AppCompatActivity() {
         if (mDbWorkerThread == null) {
             mDbWorkerThread = DbWorkerThread("dbWorkerThread")
             mDbWorkerThread.start()
+            Thread.sleep(1000)
         }
         mostrarDetalle()
     }

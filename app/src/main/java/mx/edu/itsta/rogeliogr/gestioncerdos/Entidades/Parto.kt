@@ -7,7 +7,7 @@ import android.arch.persistence.room.PrimaryKey
 import java.util.*
 
 @Entity(tableName = "parto",foreignKeys = [
-    ForeignKey(entity = Cerdo::class,
+    ForeignKey(entity = Reproduccion::class,
         parentColumns = ["id_reproduccion"],
         childColumns = ["id_reproduccion"],
         onDelete = ForeignKey.CASCADE

@@ -3,16 +3,33 @@
       xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
       tools:context="mx.edu.itsta.rogeliogr.gestioncerdos.MainActivity">
-    <item
-            android:id="@+id/action_add_peso"
+    <item  android:id="@+id/action_add_peso"
             android:orderInCategory="100"
             android:title="@string/action_add_peso"
-            app:showAsAction="always|withText"
-            android:icon="@android:drawable/ic_input_add"/>
+            app:showAsAction="always"
+            android:icon="@drawable/ic_pesaje"/>
 
     <item android:title="@string/agregar_vacuna"
           android:id="@+id/action_add_vacuna"
           android:orderInCategory="101"
-          android:icon="@android:drawable/checkbox_on_background"
-          app:showAsAction="always|withText"/>
+          android:icon="@drawable/ic_vacunas"
+          app:showAsAction="always"/>
+
+    <item android:title="@string/agregar_reproduccion"
+          android:id="@+id/action_add_reproduccion"
+          android:orderInCategory="102"
+          android:icon="@drawable/ic_reproduccion"
+          app:showAsAction="ifRoom"/>
+
+    <item android:title="@string/agregar_parto"
+          android:id="@+id/action_add_parto"
+          android:orderInCategory="103"
+          android:icon="@drawable/ic_parto2"
+          app:showAsAction="ifRoom"/>
+
+    <item android:title="@string/agregar_salida"
+          android:id="@+id/action_add_salida"
+          android:orderInCategory="104"
+          android:icon="@drawable/ic_parto"
+          app:showAsAction="never"/>
 </menu>
