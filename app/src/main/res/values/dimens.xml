@@ -2,5 +2,7 @@
     <dimen name="fab_margin">16dp</dimen>
 
     <dimen name="alto_fecha">36dp</dimen>
+    <dimen name="alto_observa">144dp</dimen>
+
 
 </resources>

@@ -1,10 +1,9 @@
-package mx.edu.itsta.rogeliogr.gestioncerdos
+package mx.edu.itsta.rogeliogr.gestioncerdos.Entidades
 
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
-import mx.edu.itsta.rogeliogr.gestioncerdos.Entidades.*
 
 
 @Database(entities = arrayOf(
@@ -14,7 +13,7 @@ import mx.edu.itsta.rogeliogr.gestioncerdos.Entidades.*
     Desparacitacion::class,
     Reproduccion::class,
     Parto::class,
-    Salida::class),version=7)
+    Salida::class),version=9)
 
 abstract class GCDataBase: RoomDatabase(){
     abstract fun cerdoDao(): CerdoDAO

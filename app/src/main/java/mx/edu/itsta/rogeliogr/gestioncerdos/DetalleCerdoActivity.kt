@@ -8,10 +8,10 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_detalle_cerdo.*
 import kotlinx.android.synthetic.main.content_detalle_cerdo.*
-import mx.edu.itsta.rogeliogr.gestioncerdos.Entidades.Cerdo
+import mx.edu.itsta.rogeliogr.gestioncerdos.Entidades.GCDataBase
+import mx.edu.itsta.rogeliogr.gestioncerdos.utileria.DbWorkerThread
 import mx.edu.itsta.rogeliogr.gestioncerdos.utileria.util
 
 
@@ -67,6 +67,14 @@ class DetalleCerdoActivity : AppCompatActivity() {
             agregarVacuna()
             true
         }
+        R.id.action_add_reproduccion->{
+            agregaReproduccion()
+            true
+        }
+        R.id.action_add_salida->{
+            agregaSalida()
+            true
+        }
         else -> {
             super.onOptionsItemSelected(item)
         }
@@ -110,6 +118,19 @@ class DetalleCerdoActivity : AppCompatActivity() {
         intent.putExtra("ID", ""+id_cerdo);
         startActivity(intent)
     }
+
+    fun agregaSalida(){
+        val intent = Intent(this, AgregaSalidaActivity::class.java)
+        intent.putExtra("ID", ""+id_cerdo);
+        startActivity(intent)
+    }
+
+    fun agregaReproduccion(){
+        val intent = Intent(this, AgregaReproduccionActivity::class.java)
+        intent.putExtra("ID", ""+id_cerdo);
+        startActivity(intent)
+    }
+
 
     fun mostrarPesoCerdo() {
         //entries.clear()

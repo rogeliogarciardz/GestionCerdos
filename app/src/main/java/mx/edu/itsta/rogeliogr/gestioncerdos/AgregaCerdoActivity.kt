@@ -9,8 +9,10 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_agrega_cerdo.*
-import kotlinx.android.synthetic.main.activity_agregar_peso.*
 import mx.edu.itsta.rogeliogr.gestioncerdos.Entidades.Cerdo
+import mx.edu.itsta.rogeliogr.gestioncerdos.Entidades.GCDataBase
+import mx.edu.itsta.rogeliogr.gestioncerdos.Entidades.Peso
+import mx.edu.itsta.rogeliogr.gestioncerdos.utileria.DbWorkerThread
 import mx.edu.itsta.rogeliogr.gestioncerdos.utileria.util
 import java.lang.NumberFormatException
 import java.util.*
@@ -57,10 +59,10 @@ class AgregaCerdoActivity : AppCompatActivity() {
 
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 //Toast.makeText(applicationContext, "TX: "+p2, Toast.LENGTH_LONG).show()
-                spSexo.isEnabled=false
-                if(p2==0 || p2==2){
+                spSexo.isEnabled = false
+                if (p2 == 0 || p2 == 2) {
                     spSexo.setSelection(0)
-                }else{
+                } else {
 
                     spSexo.setSelection(1)
                 }
@@ -68,28 +70,28 @@ class AgregaCerdoActivity : AppCompatActivity() {
 
         }
 
-        txtFecha.setText( "" + day + "-" + (month+1) + "-" + year)
-        fn = util.stringtoDate("" + day + "-" + (month+1) + "-" + year)
+        txtFecha.setText("" + day + "-" + (month + 1) + "-" + year)
+        fn = util.stringtoDate("" + day + "-" + (month + 1) + "-" + year)
 
 
     }
 
-    fun agregar_onClick(view: View){
-        var numero=0
+    fun agregar_onClick(view: View) {
+        var numero = 0
 
-        if(txtNumero.text.toString().isEmpty()){
+        if (txtNumero.text.toString().isEmpty()) {
             toastError("Debe escribir un número positivo")
             txtNumero.requestFocus()
             return
         }
         try {
             numero = txtNumero.text.toString().toInt()
-        }catch(ex:NumberFormatException){
+        } catch (ex: NumberFormatException) {
             toastError("Debe escribir un número positivo")
             txtNumero.requestFocus()
             return
         }
-        if(numero <=0 ){
+        if (numero <= 0) {
             toastError("Debe escribir un número positivo")
             txtNumero.requestFocus()
             return
@@ -98,9 +100,9 @@ class AgregaCerdoActivity : AppCompatActivity() {
         val task = Runnable {
             var cerdos = mDb?.cerdoDao()?.getByNumero(numero)
             mUiHandler.post {
-                if (cerdos == null || cerdos?.size == 0) {
+                if (cerdos == null ) {
                     insertarCerdo(numero)
-                }else{
+                } else {
                     toastError("Número de cerdo ya registrado")
                 }
             }
@@ -110,64 +112,64 @@ class AgregaCerdoActivity : AppCompatActivity() {
 
     }
 
-    fun insertarCerdo(numero:Int){
-        var peso=0
-        if(txtNombre.text.length<=0){
+    fun insertarCerdo(numero: Int) {
+        var peso = 0
+        if (txtNombre.text.length <= 0) {
             //toastError("Debe escribir el nombre del cerdo")
-            txtNombre.setText("Cerdo "+numero)
+            txtNombre.setText("Cerdo " + numero)
             //txtNombre.requestFocus()
             //return
         }
 
-        if(txtPeso.text.toString().length<=0){
+        if (txtPeso.text.toString().length <= 0) {
             toastError("Debe escribir el peso del cerdo")
             txtPeso.requestFocus()
             return
         }
         try {
             peso = txtPeso.text.toString().toInt()
-        }catch(ex:NumberFormatException){
+        } catch (ex: NumberFormatException) {
             toastError("El peso es un debe ser positivo")
             txtPeso.requestFocus()
             return
         }
-        if(peso <=0 ){
+        if (peso <= 0) {
             toastError("El peso es un debe ser positivo")
             txtPeso.requestFocus()
             return
         }
 
-        var cerdo  = Cerdo()
-        cerdo.nombre=  txtNombre.text.toString()
-        cerdo.numero=  numero
-        cerdo.peso= txtPeso.text.toString().toDouble()
+        var cerdo = Cerdo()
+        cerdo.nombre = txtNombre.text.toString()
+        cerdo.numero = numero
+        cerdo.peso = txtPeso.text.toString().toDouble()
 
-        cerdo.tipo=spTipoCerdo.selectedItemId.toInt()
+        cerdo.tipo = spTipoCerdo.selectedItemId.toInt()
 
-        if(spSexo.selectedItemPosition==1||spSexo.selectedItemPosition==3) {
+        if (spSexo.selectedItemPosition == 1 || spSexo.selectedItemPosition == 3) {
             cerdo.sexo = "H"
-        }else{
-            cerdo.sexo="M"
+        } else {
+            cerdo.sexo = "M"
         }
-        cerdo.f_nac=fn.time
+        cerdo.f_nac = fn.time
 
-        if(txtFecha.text.toString().length<=0){
+        if (txtFecha.text.toString().length <= 0) {
             toastError("Debe escribir o seleccionar una fecha de nacimiento del cerdo")
             txtFecha.requestFocus()
             return
         }
 
-        val task = Runnable { mDb?.cerdoDao()?.insert(cerdo)
+        val task = Runnable {
+            mDb?.cerdoDao()?.insert(cerdo)
             mUiHandler.post {
-                this.onBackPressed()
+               this.onBackPressed()
             }
         }
         mDbWorkerThread.postTask(task)
     }
 
+
     fun txtFecha_onClick(view:View){
-
-
         val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
             // Display Selected date in textbox
             txtFecha.setText( "" + dayOfMonth + "-" + (monthOfYear+1) + "-" + year)

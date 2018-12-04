@@ -54,4 +54,7 @@
     <string name="agregar_reproduccion">Agregar reproducción</string>
     <string name="agregar_parto">Parto</string>
     <string name="agregar_salida">Salida</string>
+    <string name="describe_salida_cerdos">Describe la salida de la granja de los cerdos</string>
+    <string name="motivo">Motivo</string>
+    <string name="aceptar">Aceptar</string>
 </resources>

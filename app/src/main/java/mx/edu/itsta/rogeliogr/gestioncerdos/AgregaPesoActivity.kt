@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import kotlinx.android.synthetic.main.activity_agregar_peso.*
+import mx.edu.itsta.rogeliogr.gestioncerdos.Entidades.GCDataBase
 import mx.edu.itsta.rogeliogr.gestioncerdos.Entidades.Peso
+import mx.edu.itsta.rogeliogr.gestioncerdos.utileria.DbWorkerThread
 import mx.edu.itsta.rogeliogr.gestioncerdos.utileria.util
 import java.lang.NumberFormatException
 import java.util.*

@@ -6,7 +6,9 @@ import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import kotlinx.android.synthetic.main.activity_agrega_vacuna.*
+import mx.edu.itsta.rogeliogr.gestioncerdos.Entidades.GCDataBase
 import mx.edu.itsta.rogeliogr.gestioncerdos.Entidades.Vacuna
+import mx.edu.itsta.rogeliogr.gestioncerdos.utileria.DbWorkerThread
 import mx.edu.itsta.rogeliogr.gestioncerdos.utileria.util
 import java.util.*
 

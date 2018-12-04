@@ -6,9 +6,10 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import com.github.mikephil.charting.data.Entry
 import kotlinx.android.synthetic.main.activity_lista_vacunas.*
-import mx.edu.itsta.rogeliogr.gestioncerdos.Entidades.Peso
+import mx.edu.itsta.rogeliogr.gestioncerdos.Entidades.GCDataBase
 import mx.edu.itsta.rogeliogr.gestioncerdos.Entidades.Vacuna
 import mx.edu.itsta.rogeliogr.gestioncerdos.Listas.ListaVacunasCerdoAdapter
+import mx.edu.itsta.rogeliogr.gestioncerdos.utileria.DbWorkerThread
 
 class ListaVacunasActivity : AppCompatActivity() {
 

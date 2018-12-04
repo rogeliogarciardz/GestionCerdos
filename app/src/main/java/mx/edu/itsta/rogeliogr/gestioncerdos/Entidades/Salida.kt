@@ -16,10 +16,12 @@ import java.util.*
 
 data class Salida(@PrimaryKey(autoGenerate=true) var id_salida:Long?,
                 @ColumnInfo(name = "id_cerdo") var id_cerdo:Long,
+                @ColumnInfo(name="Numero") var numero:Int,
+                @ColumnInfo(name="F_nac") var f_nac: Long,
                 @ColumnInfo(name="Fecha") var fecha:Long,
                 @ColumnInfo(name="Motivo") var motivo:String,
-                  @ColumnInfo(name="Observaciones") var observaciones:String
+                @ColumnInfo(name="Observaciones") var observaciones:String
 )
 {
-    constructor():this(null ,0, Date().time,"","")
+    constructor():this(null ,0,0, Date().time,Date().time,"","")
 }

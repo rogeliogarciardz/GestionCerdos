@@ -21,7 +21,7 @@ interface CerdoDAO{
     fun deleteById(idc:Long)
 
     @Query("SELECT * FROM cerdos WHERE Numero=:numero")
-    fun getByNumero(numero:Int):List<Cerdo>
+    fun getByNumero(numero:Int):Cerdo
 
     @Query("SELECT * FROM cerdos WHERE id_cerdo=:id_cerdo")
     fun getByID(id_cerdo:Long):Cerdo

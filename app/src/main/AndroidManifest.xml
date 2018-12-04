@@ -46,6 +46,8 @@
         </activity>
         <activity android:name=".AgregaSalidaActivity">
         </activity>
+        <activity android:name=".ListaSalidasActivity">
+        </activity>
     </application>
 
 </manifest>
