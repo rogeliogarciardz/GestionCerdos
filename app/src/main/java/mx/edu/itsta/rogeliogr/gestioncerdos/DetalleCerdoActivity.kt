@@ -1,6 +1,7 @@
 package mx.edu.itsta.rogeliogr.gestioncerdos
 
 import android.content.Intent
+import android.opengl.Visibility
 import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.Snackbar
@@ -99,6 +100,26 @@ class DetalleCerdoActivity : AppCompatActivity() {
                     mostrarPesoCerdo()
                     mostrarVacunaCerdo()
 
+                    if(cerdo?.tipo == 1) {
+                        textView22.visibility=View.VISIBLE
+                        lbldcReproduccion.visibility=View.VISIBLE
+                        textView26.visibility=View.VISIBLE
+                        lbldcPartos.visibility=View.VISIBLE
+
+                        btndcReproduccion.visibility=View.VISIBLE
+                        btndcPartos.visibility=View.VISIBLE
+
+                        mostrarReproduccionCerdo()
+                    }else{
+                        textView22.visibility=View.GONE
+                        lbldcReproduccion.visibility=View.GONE
+                        textView26.visibility=View.GONE
+                        lbldcPartos.visibility=View.GONE
+
+                        btndcReproduccion.visibility=View.GONE
+                        btndcPartos.visibility=View.GONE
+                    }
+
                 } else {
                     util.toastError("NO entontrado " + id_cerdo,this)
                 }
@@ -180,6 +201,31 @@ class DetalleCerdoActivity : AppCompatActivity() {
         mDbWorkerThread.postTask(task)
     }
 
+    fun mostrarReproduccionCerdo() {
+        val task = Runnable {
+            var salida=   util.stringLenCenter("NO",4) +
+                    util.stringLenCenter("Celo",14)+
+                    util.stringLen("Semental",6)+
+                    util.stringLenCenter("Monta",14) +"\r\n"
+            var reproduccion =
+                mDb?.reproduccionDao()?.getLast(id_cerdo,5)
+            mUiHandler.post {
+                var i=0
+                if (!(reproduccion == null && reproduccion?.size == 0)) {
+                    for (item in reproduccion!!) {
+                        i++
+                        salida+=util.stringLenCenter(""+i,4) +
+                                util.stringLenCenter(util.timeStampToString(item.fecha_celo),14)+
+                                util.stringLen(""+item.no_semental,6)+
+                                util.stringLenCenter(util.timeStampToString(item.fecha_celo),14)+"\r\n"
+                    }
+                }
+                lbldcReproduccion.setText(salida)
+            }
+        }
+        mDbWorkerThread.postTask(task)
+    }
+
     fun verListaPesos_onClick(view: View){
         val intent = Intent(this, ListaPesosActivity::class.java)
         intent.putExtra("ID", ""+id_cerdo);
@@ -190,6 +236,18 @@ class DetalleCerdoActivity : AppCompatActivity() {
         val intent = Intent(this, ListaVacunasActivity::class.java)
         intent.putExtra("ID", ""+id_cerdo);
         startActivity(intent)
+    }
+
+    fun verListaReproduccion_onClick(view: View){
+        //val intent = Intent(this, ListaVacunasActivity::class.java)
+        //intent.putExtra("ID", ""+id_cerdo);
+        //startActivity(intent)
+    }
+
+    fun verListaPartos_onClick(view: View){
+        //val intent = Intent(this, ListaVacunasActivity::class.java)
+        //intent.putExtra("ID", ""+id_cerdo);
+        //startActivity(intent)
     }
 
     override fun onDestroy() {

@@ -48,6 +48,8 @@
         </activity>
         <activity android:name=".ListaSalidasActivity">
         </activity>
+        <activity android:name=".AgregaPartoActivity">
+        </activity>
     </application>
 
 </manifest>

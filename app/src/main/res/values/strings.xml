@@ -57,4 +57,11 @@
     <string name="describe_salida_cerdos">Describe la salida de la granja de los cerdos</string>
     <string name="motivo">Motivo</string>
     <string name="aceptar">Aceptar</string>
+    <string name="reproduccion">Reproducción</string>
+    <string name="partos">Partos</string>
+    <string name="informaciol_parto">Información del parto</string>
+    <string name="numero_crias">Número de crías</string>
+    <string name="fecha_parto">Fecha de parto</string>
+    <string name="peso_crias">Peso de crías (separadas por coma (,) )</string>
+    <string name="crias_vivas">Crías vivas</string>
 </resources>

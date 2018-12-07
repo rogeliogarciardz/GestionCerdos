@@ -122,7 +122,7 @@
                     android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/lbldcPesoH"/>
             <TextView
                     android:text="@string/ulimas_vacunas"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:id="@+id/textView3"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="8dp"
@@ -175,7 +175,8 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView3" app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="8dp" android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    android:fontFamily="monospace"/>
+                    android:fontFamily="monospace"
+            />
             <Button
                     android:text="@string/ver_vacunas"
                     android:layout_width="0dp"
@@ -184,14 +185,86 @@
                     android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginEnd="8dp" style="@android:style/Widget.Button.Small"
                     app:layout_constraintTop_toTopOf="@+id/divider2" android:onClick="verListaVacunas_onClick"/>
+            <TextView
+                    android:text="@string/reproduccion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView22"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp" app:layout_constraintEnd_toStartOf="@+id/guideline10"
+                    android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    app:layout_constraintTop_toBottomOf="@+id/divider5" android:layout_marginTop="8dp"/>
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/lbldcReproduccion"
+                    android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView22"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" app:fontFamily="monospace"/>
+            <TextView
+                    android:text="@string/partos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView26"
+                    app:layout_constraintTop_toBottomOf="@+id/lbldcReproduccion"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp" app:layout_constraintEnd_toStartOf="@+id/guideline10"
+                    android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/lbldcPartos"
+                    app:layout_constraintTop_toBottomOf="@+id/textView26" android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" app:fontFamily="monospace"/>
+            <Button
+                    android:text="Ver reprod..."
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/alto_boton_detalle"
+                    android:id="@+id/btndcReproduccion"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+                    style="@android:style/Widget.Button.Small" android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toStartOf="@+id/guideline10" android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/lbldcVacunas"/>
+            <View
+                    android:id="@+id/divider5"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintTop_toBottomOf="@+id/lbldcVacunas" android:layout_marginTop="8dp"/>
+            <View
+                    android:id="@+id/divider7"
+                    android:layout_width="395dp"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintTop_toBottomOf="@+id/lbldcPartos"
+                    android:layout_marginTop="8dp" app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="8dp" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"/>
+            <Button
+                    android:text="Ver partos..."
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/alto_boton_detalle"
+                    android:id="@+id/btndcPartos" app:layout_constraintStart_toStartOf="@+id/guideline10"
+                    android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/lbldcReproduccion"
+                    style="@android:style/Widget.Button.Small"/>
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
-    <View
-            android:id="@+id/divider5"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:background="?android:attr/listDivider"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/scrollView2" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"/>
 </android.support.constraint.ConstraintLayout>

@@ -3,6 +3,6 @@
 
     <dimen name="alto_fecha">36dp</dimen>
     <dimen name="alto_observa">144dp</dimen>
-
+    <dimen name="alto_boton_detalle">32dp</dimen>
 
 </resources>

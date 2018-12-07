@@ -21,8 +21,9 @@ data class Parto(@PrimaryKey(autoGenerate=true) var id_parto:Long?,
                         @ColumnInfo(name="Vivas") var vivas:Int,
                         @ColumnInfo(name="Peso_crias") var peso_crias:String,
                         @ColumnInfo(name="Promedio_pesos") var promedio_pesos:Double,
-                        @ColumnInfo(name="Muertas") var muertas:Long
+                        @ColumnInfo(name="Muertas") var muertas:Long,
+                 @ColumnInfo(name="Observaciones") var observaciones:String
 )
 {
-    constructor():this(null ,0, 0,Date().time,0,0,"",0.0,0)
+    constructor():this(null ,0, 0,Date().time,0,0,"",0.0,0,"")
 }
