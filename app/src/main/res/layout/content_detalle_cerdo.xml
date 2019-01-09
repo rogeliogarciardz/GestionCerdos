@@ -28,7 +28,8 @@
                     android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="@+id/guideline7"
                     android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView5"
-                    android:textAlignment="textEnd"/>
+                    android:textAlignment="textEnd"
+                    android:gravity="end"/>
             <TextView
                     android:text="@string/no_88888"
                     android:layout_width="0dp"
@@ -209,12 +210,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView26"
-                    app:layout_constraintTop_toBottomOf="@+id/lbldcReproduccion"
                     app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp" app:layout_constraintEnd_toStartOf="@+id/guideline10"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline10"
                     android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    app:layout_constraintTop_toBottomOf="@+id/divider6" android:layout_marginTop="8dp"/>
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -265,6 +266,16 @@
                     android:layout_marginRight="8dp" android:layout_marginTop="8dp"
                     app:layout_constraintTop_toBottomOf="@+id/lbldcReproduccion"
                     style="@android:style/Widget.Button.Small"/>
+            <View
+                    android:id="@+id/divider6"
+                    android:layout_width="395dp"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp" app:layout_constraintTop_toBottomOf="@+id/lbldcReproduccion"
+                    android:layout_marginTop="8dp"/>
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

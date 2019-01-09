@@ -15,6 +15,7 @@
             android:id="@+id/txtLog" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
     <android.support.v7.widget.RecyclerView
             android:layout_width="0dp"
@@ -24,12 +25,4 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toTopOf="@+id/txtLog">
     </android.support.v7.widget.RecyclerView>
-    <Button
-            android:text="Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button2" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="64dp"
-            app:layout_constraintTop_toBottomOf="@+id/rvListaCerdos"
-            app:layout_constraintStart_toEndOf="@+id/txtLog" android:layout_marginStart="8dp"
-            android:onClick="allVisible_Onclick"/>
 </android.support.constraint.ConstraintLayout>

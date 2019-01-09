@@ -72,6 +72,10 @@ class DetalleCerdoActivity : AppCompatActivity() {
             agregaReproduccion()
             true
         }
+        R.id.action_add_parto->{
+            agregaParto()
+            true
+        }
         R.id.action_add_salida->{
             agregaSalida()
             true
@@ -80,6 +84,7 @@ class DetalleCerdoActivity : AppCompatActivity() {
             super.onOptionsItemSelected(item)
         }
     }
+
 
 
     fun mostrarDetalle() {
@@ -109,6 +114,10 @@ class DetalleCerdoActivity : AppCompatActivity() {
                         btndcReproduccion.visibility=View.VISIBLE
                         btndcPartos.visibility=View.VISIBLE
 
+                        divider6.visibility=View.VISIBLE
+                        divider7.visibility=View.VISIBLE
+
+
                         mostrarReproduccionCerdo()
                     }else{
                         textView22.visibility=View.GONE
@@ -118,6 +127,9 @@ class DetalleCerdoActivity : AppCompatActivity() {
 
                         btndcReproduccion.visibility=View.GONE
                         btndcPartos.visibility=View.GONE
+
+                        divider6.visibility=View.GONE
+                        divider7.visibility=View.GONE
                     }
 
                 } else {
@@ -130,19 +142,26 @@ class DetalleCerdoActivity : AppCompatActivity() {
 
     fun agregarPeso() {
         val intent = Intent(this, AgregaPesoActivity::class.java)
-        intent.putExtra("ID", ""+id_cerdo);
+        intent.putExtra("ID", ""+id_cerdo)
         startActivity(intent)
     }
 
     fun agregarVacuna() {
         val intent = Intent(this, AgregaVacunaActivity::class.java)
-        intent.putExtra("ID", ""+id_cerdo);
+        intent.putExtra("ID", ""+id_cerdo)
         startActivity(intent)
     }
 
     fun agregaSalida(){
         val intent = Intent(this, AgregaSalidaActivity::class.java)
-        intent.putExtra("ID", ""+id_cerdo);
+        intent.putExtra("ID", ""+id_cerdo)
+        startActivity(intent)
+    }
+
+
+    private fun agregaParto() {
+        val intent = Intent(this, AgregaPartoActivity::class.java)
+        intent.putExtra("ID", ""+id_cerdo)
         startActivity(intent)
     }
 
@@ -214,7 +233,7 @@ class DetalleCerdoActivity : AppCompatActivity() {
                 if (!(reproduccion == null && reproduccion?.size == 0)) {
                     for (item in reproduccion!!) {
                         i++
-                        salida+=util.stringLenCenter(""+i,4) +
+                        salida+=util.stringLenCenter(""+item.id_reproduccion,4) +
                                 util.stringLenCenter(util.timeStampToString(item.fecha_celo),14)+
                                 util.stringLen(""+item.no_semental,6)+
                                 util.stringLenCenter(util.timeStampToString(item.fecha_celo),14)+"\r\n"

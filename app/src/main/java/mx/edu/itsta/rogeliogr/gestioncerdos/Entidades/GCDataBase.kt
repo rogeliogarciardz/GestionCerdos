@@ -13,7 +13,7 @@ import android.content.Context
     Desparacitacion::class,
     Reproduccion::class,
     Parto::class,
-    Salida::class),version=9)
+    Salida::class),version=10)
 
 abstract class GCDataBase: RoomDatabase(){
     abstract fun cerdoDao(): CerdoDAO
